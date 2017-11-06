@@ -1,0 +1,10 @@
+com\ihours\config\Initializer.class
+com\ihours\dao\UsersDAO.class
+com\ihours\dao\UsersDAOImpl.class
+com\ihours\model\Error.class
+com\ihours\model\UsersDetails.class
+com\ihours\config\DataBaseConfig.class
+com\ihours\service\UsersServiceImpl.class
+com\ihours\config\WebConfig.class
+com\ihours\controller\UsersController.class
+com\ihours\service\UsersService.class

@@ -5,6 +5,8 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -15,6 +17,9 @@ import com.ihours.model.UsersDetails;
 
 
 public class DataBaseConfig {
+	
+	Logger logger =LoggerFactory.getLogger(DataBaseConfig.class);
+	
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();

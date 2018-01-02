@@ -26,15 +26,15 @@ public class UsersDAOImpl implements UsersDAO {
 	@Transactional
 	public boolean saveOrUpdate(UsersDetails users) {
 		
-		Logger.info("save Operation started", users.getUser_id());
+		Logger.info("save Operation started", users.getId());
 		Session session=sessionFactory.openSession();
 
 		Transaction tx=session.beginTransaction();
-		users.setEnable(true);
-		users.setIsonline(false);
+		users.setEnabled(true);
+		users.setOnline(false);
 		session.saveOrUpdate(users);
 		tx.commit();
-		Logger.info("User object has been saved successfually", users.getUser_id());
+		Logger.info("User object has been saved successfually", users.getId());
 	
 		return true;
 	}
@@ -73,18 +73,18 @@ public class UsersDAOImpl implements UsersDAO {
 
 	@SuppressWarnings({ "rawtypes", "deprecation" })
 	@Transactional
-		public UsersDetails login(UsersDetails user) {
+		public UsersDetails login(String username,String password) {
 		
 		Session session=sessionFactory.openSession();
-
-		Query query=session.createQuery("from UsersDetails where userName=? and password=? and enable=?");
+	//String hql = "from Users where userName= " + "'" + username + "'" + "and password= " + "'" + password + "'";
+		Query query=session.createQuery("from UsersDetails where username=? and password=? and enabled=?");
 	
-		query.setString(0, user.getUserName()); //for assigning the values to parameter username
-		query.setString(1, user.getPassword());
+		query.setString(0, username); //for assigning the values to parameter username
+		query.setString(1, password);
 		query.setBoolean(2, true);
 		UsersDetails validUsers=(UsersDetails)query.uniqueResult();
 		session.close();
-		System.out.println("Dao completed");
+		System.out.println("login Dao completed");
 		return validUsers;
 	}
 	
@@ -94,7 +94,7 @@ public class UsersDAOImpl implements UsersDAO {
 		List<UsersDetails> list = UserList();
 
 		for (UsersDetails usersDetail : list) {
-			if (usersDetail.getUserName().equals(username)) {
+			if (usersDetail.getUsername().equals(username)) {
 				return false;// invalid user
 			}
 		}
@@ -120,7 +120,7 @@ public class UsersDAOImpl implements UsersDAO {
 		Transaction tx=session.beginTransaction();
 		session.update(validUser);
 		tx.commit();
-		
+		session.clear();
 		return validUser;
 	}
 	}

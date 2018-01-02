@@ -13,7 +13,7 @@ public interface UsersService {
 	public UsersDetails getUser(String username);
 	public UsersDetails viewUser(int userid);
 	public List<UsersDetails> UserList();
-	public UsersDetails login(UsersDetails user);
+	public UsersDetails login(String username,String password);
 	public boolean isUsernameValid(String username);
 	public boolean isEmailValid(String email);
 }

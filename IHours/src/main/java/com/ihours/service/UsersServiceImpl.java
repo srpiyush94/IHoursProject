@@ -38,9 +38,9 @@ public class UsersServiceImpl implements UsersService {
 		return usersDAO.UserList();
 	}
 
-	public UsersDetails login(UsersDetails user) {
+	public UsersDetails login(String username,String password) {
 		
-		return usersDAO.login(user);
+		return usersDAO.login(username,password);
 	}
 
 	public boolean isUsernameValid(String username) {

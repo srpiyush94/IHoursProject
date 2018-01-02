@@ -1,9 +1,9 @@
-app.factory('UserService',function($http)
+app.factory('RegisterService',function($http)
 {
     var userService={}
     
     userService.registerUser = registerUser;
-    userService.getUserByUsername=getUserByUsername
+  
     
 
     function registerUser(user)
@@ -15,7 +15,7 @@ app.factory('UserService',function($http)
     }
     
  
-
+/*
      function  getUserByUsername()
     {
         return $http.get("http://localhost:7070/IHours/getuserdetails")
@@ -24,7 +24,7 @@ app.factory('UserService',function($http)
     userService.updateUserProfile=function(user)
     {
         return $http.put("http://localhost:7070/IHours/updateprofile",user)
-    }
+    }*/
     
 return userService;
 })

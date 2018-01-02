@@ -1,14 +1,13 @@
-
-app.controller('UserController',function(UserService,$scope,$location,$rootScope,$cookieStore)
+app.controller('RegisterController',function(RegisterService,$scope,$location,$rootScope,$cookieStore)
         {
     
     $scope.register=function()
    {
     	console.log("register....")
-    	UserService.registerUser($scope.user).then (function(response)
+    	RegisterService.registerUser($scope.user).then (function(response)
         {
             $scope.message="Registered successfully..... Please Login...."
-                console.log("done")
+             console.log("done")
                 
                 $location.path('/login')
         }, function(response)
@@ -19,17 +18,7 @@ app.controller('UserController',function(UserService,$scope,$location,$rootScope
     
     }
     
-    $scope.login=function(){
-    	UserService.login($scope.user).then(function(response){
-            $rootScope.currentUser=response.data
-            $cookieStore.put("currentUser",response.data)
-            $location.path('/home')
-            
-        },function(response){
-            $scope.error=response.data
-            $location.path('/login')
-        })
-    }
+  /*
     $scope.userobj=UserService.getUserByUsername().then(function(response)
     		{
     	$scope.userobj=response.data
@@ -45,5 +34,5 @@ app.controller('UserController',function(UserService,$scope,$location,$rootScope
     	},function(response){
     		console.log(response.data)
     	})
-    }
+    }*/
 })

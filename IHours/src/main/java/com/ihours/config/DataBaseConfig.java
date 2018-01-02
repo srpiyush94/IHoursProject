@@ -1,9 +1,7 @@
 package com.ihours.config;
 
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+
+import com.ihours.model.BlogPost;
 import com.ihours.model.UsersDetails;
 
 
@@ -21,25 +21,26 @@ public class DataBaseConfig {
 	Logger logger =LoggerFactory.getLogger(DataBaseConfig.class);
 	
 	@Bean(name = "dataSource")
-	public DataSource getDataSource() {
+		public DataSource getDataSource() {
+		logger.info("Data Source Configuration ");
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-		dataSource.setUsername("site");
-		dataSource.setPassword("site");
-
-		System.out.println("DataBase is connected.........!");
+		dataSource.setUsername("c_site");
+		dataSource.setPassword("c_site");
+		logger.info("Data Base Connected ");
 		return dataSource;
 
 	}
 
 	private Properties getHibernateProperties() {
+		logger.info("========Hibernate Properties=========== ");
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		properties.put("hibernate.hbm2ddl.auto", "update");
 		properties.put("hibernate.format_sql","true");
-		System.out.println("Hibernate Properties");
+		logger.info("========Hibernate Properties  has been set=========== ");
 		return properties;
 
 	}
@@ -47,23 +48,22 @@ public class DataBaseConfig {
 	@Autowired
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
+		logger.info("========Hibernate Session Factory=========== ");
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
-
 		sessionBuilder.addAnnotatedClasses(UsersDetails.class);
-	
-		 
-		System.out.println("Session is crated................!");
-
+		sessionBuilder.addAnnotatedClasses(BlogPost.class);
+		logger.info("========Hibernate SessionFactory Object created=========== ");
 		return sessionBuilder.buildSessionFactory();
 
 	}
 
 	@Autowired
 	@Bean(name = "transactionManager")
-	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+ 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+		logger.info("========Hibernate Transaction =========== ");
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-		System.out.println("Transaction is crated............!");
+		logger.info("========Hibernate Transaction object created=========== ");
 		return transactionManager;
 	}
 }

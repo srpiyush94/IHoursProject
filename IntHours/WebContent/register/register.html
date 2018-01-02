@@ -1,61 +1,151 @@
-<!doctype html>
-<html data-ng-app="myApp">
-
-<style>
- body 
- 	{
-        background-color: #444;
-        background: url(https://acshub.co.uk/hubassets/uploads/2016/09/acs-website-background-building-e1472862899804.jpg );
-    }
-.vertical-offset-100{
-    padding-top:10px;
-}
-</style>
-
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Register Page</title>
+
 </head>
-<body>
- <div ng-controller='UserController'>
-<div class="container" align="justify">
-		<div class="row vertical-offset-100">
-		    <div class="col-md-6 col-md-offset-14">
-		    	<div class="panel panel-default">
-					<div class="panel-heading">
-				    	<h3 class="panel-title" align="center"><i>Please Register</i></h3>
-				 	</div>
-					<fieldset><br>
-						<div class="form-group" align="center">
-							<label class="col-md-4 control-label"><i>Enter Firstname</i></label><input type="text" ng-model="user.firstName"><br>
-						</div>	
-						<div class="form-group" align="center">
-							<label class="col-md-4 control-label"><i>Enter Lastname</i></label><input type="text" ng-model="user.lastName"><br>
+<body data-ng-app='myApp' data-ng-controller="RegisterController">	
+
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h2 align="center" style="color: black;">Registration Form</h2>
+				<!-- <form class="form-horizontal" role="form" data-ng-submit="register()" action="" > -->
+									
+									
+									<div class="form-group">
+							<label for="username" class="cols-sm-3 control-label" style="color: black;">First Name</label>
+							<div class="cols-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									 <input type="text" id="firstname" placeholder="First Name" required data-ng-model="user.firstname" class="form-control" autofocus />
+                     		</div>
+							</div>
 						</div>
-						<div class="form-group" align="center">
-							<label class="col-md-4 control-label"><i>Enter Email</i></label><input type="text" ng-model="user.email"><br>
+									<div class="form-group">
+							<label for="username" class="cols-sm-3 control-label" style="color: black;">Last Name</label>
+							<div class="cols-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									 <input type="text" id="lastname" placeholder="Last Name" required data-ng-model="user.lastname" class="form-control" autofocus />
+                     		</div>
+							</div>
 						</div>
-							<div class="form-group" align="center">
-							<label class="col-md-4 control-label"><i>Enter Contact</i></label><input type="text" ng-model="user.contact"><br>
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-3 control-label" style="color: black;">Username</label>
+							<div class="cols-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									 <input type="text" id="username" placeholder="User Name" required data-ng-model="user.username" class="form-control" autofocus />
+                     		</div>
+							</div>
 						</div>
-						<div class="form-group" align="center">
-							<label class="col-md-4 control-label"><i>Enter Username</i></label><input type="text" ng-model="user.userName"><br>
+                        
+                        <div class="form-group">
+							<label for="email" class="cols-sm-3 control-label" style="color: black;">Your Email</label>
+							<div class="cols-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									  <input type="email" id="email" placeholder="Email" required data-ng-model="user.email" class="form-control"/>
+								</div>
+							</div>
 						</div>
-						<div class="form-group" align="center">
-							<label class="col-md-4 control-label"><i>Enter Password</i></label><input type="password" ng-model="user.password"><br>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-3control-label" style="color: black;">Password</label>
+							<div class="cols-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+								  <input type="password" id="password" required placeholder="Password" data-ng-model="user.password" class="form-control"/>
+								</div>
+							</div>
 						</div>
-						<div class="form-group" align="center">
-							<label class="col-md-4 control-label"><i>Select Role</i></label><input type="radio" ng-model="user.role" value="Student">Student
-							<input type="radio" ng-model="user.role" value="Alumini">Alumini
-							<input type="radio" ng-model="user.role" value="Employee">Employee
+                        
+                        <div class="form-group">
+							<label for="confirm" class="cols-sm-3 control-label" style="color: black;">Mobile</label>
+							<div class="cols-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
+									  <input type="number" id="mobile" placeholder="mobile" required  data-ng-model="user.mobile" class="form-control">
+								</div>
+							</div>
+                            </div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-9 control-label" style="color: black;">Date</label>
+							<div class="cols-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i></span>
+									  <input type="date" id="birthDate" required data-ng-model="user.dob" class="form-control">
+								</div>
+							</div>
+                            </div>
+                            <div class="form-group">
+                    <label class="control-label col-sm-3" style="color: black;">Gender</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline" style="color: black;">
+                                    <input type="radio" id="femaleRadio" data-ng-model="user.gender" value="Female"><b>Female</b>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline" style="color: black;">
+                                    <input type="radio" id="maleRadio" data-ng-model="user.gender" value="Male"><b>Male</b>
+                                </label>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="control-label col-sm-3" style="color: black;">Role</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline" style="color: black;">
+                                    <input type="radio" id="id1" data-ng-model="user.role" value="Alumni"><b>Alumni</b>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline" style="color: black;">
+                                    <input type="radio" id="id2" data-ng-model="user.role" value="Student"><b>Student</b>
+                                </label>
+                            </div>
+                           <div class="col-sm-4">
+                                <label class="radio-inline" style="color: black;">
+                                    <input type="radio" id="id3" data-ng-model="user.role" value="Employee"><b>Employee</b>
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline" style="color: black;">
+                                    <input type="radio" id="id4" data-ng-model="user.role" value="admin"><b>Admin</b>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label" style="color: black;">Address</label>
+                    <div class="col-sm-9">
+                        <textarea draggable="true" rows="5" data-ng-model="user.address" id="address"  class="form-control"></textarea>
+                    </div>
+                </div>
+                
+
+						<div class="form-group ">
+             <button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" style="color: black;" data-ng-click="register()">Register</button>
 						</div>
-						<div class="form-group" align="center"><input type="submit" value="Register" data-ng-click="register()"><br></div><br>
-					</fieldset>
+						<p class="change_link" style="color: black;">  
+									<b>Already a member ?</b>
+									<a href="#login" class="to_register"> Go and Login</a>
+								</p>						
+				<!-- 	</form> -->
 				</div>
 			</div>
 		</div>
-</div>
-</div>
 
 </body>
 </html>

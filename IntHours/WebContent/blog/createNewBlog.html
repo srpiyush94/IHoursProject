@@ -1,0 +1,40 @@
+<html data-ng-app='myApp'>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body data-ng-controller='LoginController'>
+<div class="container" align="justify">
+		<div class="row vertical-offset-100">
+		    <div class="col-md-6 col-md-offset-14">
+		    	<div class="panel panel-default">
+					<div class="panel-heading">
+				    	<h3 class="panel-title" align="center"><i>Post Blog</i></h3>
+			 	 	</div><br>
+{{message}}
+<br>
+<formset>
+	<div class="form-group" align="center">
+		<label class="col-md-4 control-label"><i>Enter Blog Title</i></label><input ng-model="blogPost.title"><br>
+	</div>
+	<div class="form-group" align="center">
+		<label class="col-md-4 control-label"><i>Enter Blog Description</i></label><textarea ng-model="blogPost.description"></textarea><br>
+	</div>
+	<center><button class="btn btn-default" ng-click="saveBlogPost()">Post Blog</button></center>
+	</formset>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+<style>
+ body {
+        background-color: #444;
+        
+    }
+.vertical-offset-100{
+    padding-top:10px;
+}
+</style>
+</html>

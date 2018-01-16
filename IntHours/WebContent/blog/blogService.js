@@ -19,13 +19,20 @@ blogPostService.getBlogPost=function(id)
 	}
 
 
-blogPostService.addComment=function(blogComment){
-    return $http.post("http://localhost:7070/IHours/addblogcomment",blogComment)
-    }
+blogPostService.userLikes=function(id)
+{
+	return $http.get(BASE_URL + "/userLikes/"+id)
+}	
 
-blogPostService.getBlogComments=function(blogId){
-    return $http.get("http://localhost:8081/7070/IHours/getblogcomments/"+blogId)
-    }
+blogPostService.updateLikes=function(blogPost){
+	return $http.put(BASE_URL + "/updatelikes",blogPost);
+}
+
+blogPostService.addComment=function(body,id){
+	//http://......../Good/12  -> @PathVariable
+	return $http.post(BASE_URL + "/addcomment?body="+body +'&id='+id)
+	//http://localhost:8080/project2middleware/addcomment?commentText='Thanks'&id=484 
+}
 
 return blogPostService;
 })

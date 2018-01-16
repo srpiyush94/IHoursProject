@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Job Page</title>
+<style type="text/css">
+.btn1 {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border-radius:1px;
+}
+</style>
+</head>
+
+<body data-ng-app="myApp">
+<br><br>
+<h2 align="center"><b>View Jobs</b></h2><br>
+<div data-ng-init="jobslist()">
+<div data-ng-repeat="job in jobs">
+<div class="container">
+	<div class="row">
+ <div class="span3">
+        	<div class="well"><h2 class="text-info">TITLE : {{job.title}}</h2><hr> 
+
+<p ><span class="label label-info"><font size="3">COMPANY : {{job.company}}</font></span></p><hr>
+
+<p>DETAILS : {{job.jobdetails}}</p><hr>
+
+<p ><span class="label label-info"><font size="3">LAST DATE : {{job.lastdate |  date:dd/MM/yyyy}}</font></span></p>
+        </div></div></div></div></div></div>
+
+
+</body>
+</html>

@@ -1,34 +1,34 @@
-<div class="post">
-          <div>            
-            <h2>{{blog.blogTitle}}</h2>
-            <cite>by {{ blog.userName}} on {{blog.createdDate}}</cite>
-            <div class="post-body">
-             <p>
-               {{blog.blogContent}}
-             </p> 
-            </div>
-            
-            <div class="comments">
-              <input type="hidden"  data-ng-model="clickCount" value="0"/>         
-              <button class="fa fa-heart" data-ng-click="updateLikes(blog)" data-ng-if="blog.userName != currentuser.userName" data-ng-show="currentuser.userName"> {{blog.noOfLikes}}</button>
-              <h3>Comments</h3>
-              <ul>
-               <li data-ng-repeat="comment in commentList">
-                 "{{comment.commentText}}"
-                 <cite>- <b>{{comment.userName}}</b> </cite>
-                 <br> {{comment.commentDate}}
-               </li>
-              </ul>
-              <div data-ng-show="currentuser.userName">
-              <form name="commentForm">
-	              
-	                
-	                <h4>Add Comment</h4>
-	                  <textarea data-ng-model="comment.commentText" cols="20" rows="5" placeholder="Comment Text Here" required></textarea>
-	                                  
-	                  <button data-ng-click="addComment(comment,blog.blogId)">Submit</button>
-	           </form>
-	           </div>
-              </div>
-        </div>
-      </div>
+<div class="row" align="center" data-ng-app='myApp' data-ng-controller='BlogPostController'  data-ng-show="!isAdmin">
+<div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<div>{{blogPost.title}}</div>
+<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
+<span><strong>On:</strong>{{blogPost.postedOn | date:'medium'}}</span>
+</div>
+<div class="panel-body">
+{{blogPost.description}} 
+</div>
+</div></div>
+</div>
+<form>
+<div class="container" align="center">
+<textarea rows="3" cols="20" ng-model="blogComment.body"></textarea><br>
+
+<button ng-click="addComment()" value="Post Comment" class="btn btn-primary">Post comment</button>
+</div>
+</form>
+
+<div class="row" align="center">
+<a href="" ng-click="getBlogComments(blogPost.id)">Show Blog Comments</a>
+<ul ng-show="showComments">
+<li ng-repeat="comment in blogComments" style="list-style: none;">
+<div>
+{{comment.body}}
+<span><strong>Commented By:</strong>{{blogPost.createdBy.username}}</span>
+<span><strong>Commented On:</strong>{{comment.commentedOn | date:'MM/dd/yyyy'}}</span>
+</div>
+</li>
+</ul>
+</div>
+

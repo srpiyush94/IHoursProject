@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<style>
+body{
+font-family:initial;
+}
+</style>
+</head>
+
+
+<body>
+<br><br><br><br><br><br><br>
+<div ng-show="pendingRequests.length==0">
+<h3 align="center" style="color:#286090;"><b>No Pending Requests</b></h3>
+</div>
+<table class="table" style="align:center;margin-left:100px;;margin-right:100px;width:80%;"  data-ng-show="pendingRequests.length>0">
+<thead>
+<tr>
+<th>Username</th>
+<th>Image</th>
+<th>Accept</th>
+<th>Reject</th>
+</tr>
+</thead>
+<tbody>
+<!-- Pending request is object of type friend -->
+<!--pendingRequests is List of Friends  -->
+<tr ng-repeat="pendingrequest in pendingRequests">
+<td><a ng-click="getUserDetails()">{{pendingrequest.fromId}}</a></td>
+<td><img  class="img-circle"  src="http://localhost:7070/IHours/getimage/{{pendingrequest.fromId}}"  width="44" height="42" style="color:white;"></td>
+<td><a class="btn btn-success" data-ng-click="updatePendingRequest(pendingrequest,'A')"><span class="glyphicon glyphicon-ok"></span>&nbsp;
+<!-- update friend set status 'A'  where id=?-->
+<span style="color:white;">Accept</a></span></td>
+<td><a class="btn btn-danger" data-ng-click="updatePendingRequest(pendingrequest,'R')"><span class="glyphicon glyphicon-remove"></span>&nbsp;
+<!-- Delete friend set status 'R' where id=? -->
+<span style="color:white;"> Reject</a></span></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

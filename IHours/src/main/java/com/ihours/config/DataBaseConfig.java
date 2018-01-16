@@ -11,9 +11,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 
-import com.ihours.model.BlogPost;
-import com.ihours.model.UsersDetails;
-
+import com.ihours.model.*;
 
 
 public class DataBaseConfig {
@@ -26,8 +24,8 @@ public class DataBaseConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-		dataSource.setUsername("c_site");
-		dataSource.setPassword("c_site");
+		dataSource.setUsername("site");
+		dataSource.setPassword("site");
 		logger.info("Data Base Connected ");
 		return dataSource;
 
@@ -53,6 +51,16 @@ public class DataBaseConfig {
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.addAnnotatedClasses(UsersDetails.class);
 		sessionBuilder.addAnnotatedClasses(BlogPost.class);
+		sessionBuilder.addAnnotatedClasses(BlogComment.class);
+		sessionBuilder.addAnnotatedClasses(ProfileImage.class);
+		sessionBuilder.addAnnotatedClasses(BlogPostLikes.class);
+		sessionBuilder.addAnnotatedClasses(Job.class);
+		sessionBuilder.addAnnotatedClasses(Forum.class);
+		sessionBuilder.addAnnotatedClass(ForumComment.class);
+		sessionBuilder.addAnnotatedClass(Event.class);
+		sessionBuilder.addAnnotatedClass(Friend.class);
+		
+		
 		logger.info("========Hibernate SessionFactory Object created=========== ");
 		return sessionBuilder.buildSessionFactory();
 

@@ -47,13 +47,13 @@ public class BlogPostServiceImpl implements BlogPostService {
 	}
 
 	public List<BlogComment> getBlogComments(int blogId) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return blogPostDAO.getBlogComments(blogId);
 	}
 
-	public void addBlogComment(BlogComment blogComment) {
-		// TODO Auto-generated method stub
-		
+	public boolean addBlogComment(BlogComment blogComment) {
+	
+	return	blogPostDAO.addBlogComment(blogComment);
 	}
 	
 	

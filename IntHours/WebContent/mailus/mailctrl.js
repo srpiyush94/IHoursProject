@@ -1,5 +1,5 @@
 app.controller('mailctrl', ['$scope','$http',function($scope,$http) {
-	var BASE_URL = 'http://localhost:8080/UniteUpRestServices';
+	var BASE_URL = 'http://localhost:7070/IHours';
 	
 	$scope.mailus=function(){
 		$http({

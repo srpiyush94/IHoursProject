@@ -2,22 +2,25 @@ package com.ihours.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
+
 @Entity
 @Table(name="C_BlogComment")
-public class BlogComment {
-	
+ public class BlogComment {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	@ManyToOne	
+	@JsonIgnore
+	private BlogPost blogPost;
 	@ManyToOne
-	@JoinColumn(name="username")
-private UsersDetails commentedBy;
-private Date commentedOn;
-@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-@JoinColumn(name="blogpost_id")
-private BlogPost blogPost;
-private String body;
+	private UsersDetails commentedBy;
+	private Date commentedOn;
+	@Column(nullable=false)
+	private String body;
+
 public int getId() {
 	return id;
 }

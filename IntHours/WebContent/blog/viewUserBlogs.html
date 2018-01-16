@@ -1,34 +1,44 @@
-<body  data-ng-app='myApp' data-ng-controller='LoginController'>
+<h3>Approved Blogpost</h3>
+<div class="row">
+	<div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<b>{{blogPost.blogTitle}}</b> <b>Created By:</b>{{blogPost.createdBy.firstname}}<br>
+			<a href=""> <span data-ng-show="islogged"><img	src="http://localhost:7070/IHours/getimage/{{currentUser.username}}"	alt="upload Picture" width="100px" height="100px"	class="img-rounded"></span></a>
+				<b>Created On:</b>{{blogPost.postedOn | date :'yyyy:MM:dd'}}
+			</div>
+			<div class="panel-body">{{blogPost.description}}</div>
 
-<div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<div>{{blogPost.title}}</div>
-<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
-<span><strong>On:</strong>{{blogPost.postedOn | date:'medium'}}</span>
+			<a></a> <br>
+		</div>
+	</div>
 </div>
-<div class="panel-body">
-{{blogPost.description}}
+<b> Number of likes</b>
+{{blogPost.likes}}
+<div ng-show="liked">
+	<span class="glyphicon glyphicon-thumbs-up" style="color: blue"
+		ng-click="updateLikes()"></span>
 </div>
-</div></div>
+<div ng-show="!liked">
+	<span class="glyphicon glyphicon-thumbs-up" style="color: black"
+		ng-click="updateLikes()"></span>
+</div>
+Blog Comments
+<div class="container">
+	<textarea rows="4" cols="15" ng-model="body"></textarea>
+	<br>
+	<!--  insert into blogcomment values (?,blogpostid,username,commenttext,commentedon) -->
+	<input type="submit" data-ng-click="addComment()" value="POST COMMENT">
+</div>
 
-<form>
-<div class="container" align="center">
-<textarea rows="3" cols="20" ng-model="blogComment.body"></textarea><br>
-
-<button ng-click="addComment()" value="Post Comment" class="btn btn-primary">Post comment</button>
-</div>
-</form>
-
-<div class="row" align="center">
-<a href="" ng-click="getBlogComments(blogPost.id)">Show Blog Comments</a>
-<ul ng-show="showComments">
-<li ng-repeat="comment in blogComments" style="list-style: none;">
-<div>
-{{comment.body}}
-<span><strong>Commented By:</strong>{{comment.commentedBy.username}}</span>
-<span><strong>Commented On:</strong>{{comment.commentedOn | date:'MM/dd/yyyy'}}</span>
-</div>
-</li>
-</ul>
-</div>
+	<div>
+	 <b> <a href="" ng-click="showComments()">{{blogPost.blogComments.length}} comments</a></b>
+		<ul ng-show="showComment" style="list-style:none">
+			<li
+				ng-repeat="comment in blogPost.blogComments | orderBy:'-commentedOn'">
+				{{comment.commentText}}<br> <strong>Commented By </strong>
+				{{comment.commentedBy.username}} &nbsp; <strong>Commented
+					On</strong> {{comment.commentedOn | date : 'medium'}}
+			</li>
+		</ul>
+	</div>

@@ -7,10 +7,11 @@ import com.ihours.model.UsersDetails;
 
 public interface FriendDAO {
 	
-	List<UsersDetails> listOfSuggestedUsers(String Username);
-	void friendRequest(String fromUsername, String toUsername);
-	List<Friend> listOfPendingRequest(String loggedInUsername);
-	void updatePendingRequest(String fromId,String toId,char status);
-	List<Friend> listOfFriends(String Username);
+	List<UsersDetails> suggestedUsersList(String username);
+	public void addFriendRequest(Friend friend);
+	List<Friend> pendingRequests(String username);
+	public void updatePendingRequest(Friend friend);
+	List<UsersDetails> listofFriends(String username);
+	List<UsersDetails> listofMutualFriends(String loginId,String suggestedUsername);
 
 }

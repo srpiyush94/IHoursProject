@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Insert title here</title>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+</head>
+<body>
+
+<div class="container kv-main">
+          <div class ="form-group">
+          <form enctype="multipart/form-data" method="post" action="http://localhost:7070/IHours/doUpload">
+          <input type="file" name="file" id="file"/>
+          <input type="hidden" name="username" id="username" value="{{currentUser.username}}"/>
+          <input type="submit" value="upload">
+      </form>
+  </div>
+   </div>
+   
+       
+</body>
+</html>

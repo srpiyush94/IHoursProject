@@ -98,5 +98,18 @@ public class UsersController {
         return new ResponseEntity<List<UsersDetails>>(users, HttpStatus.OK);
     }
   
+	@RequestMapping(value="/updateprofile",method=RequestMethod.PUT)
+	public ResponseEntity<?> updateUserProfile(@RequestBody UsersDetails user,HttpSession session)
+	{    
+	    UsersDetails validUser=(UsersDetails)session.getAttribute("validUser");
+	    if(validUser==null)
+	    {
+	        Error error=new Error("Unauthorized user");
+	        return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED); 
+	    }
+	    usersService .updateUser(validUser);
+	    usersService.updateUser(validUser);
+	    return new ResponseEntity<Void>(HttpStatus.OK);
+	}
 	
 }

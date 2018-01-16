@@ -5,13 +5,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 @Entity
-@Table(name="Friends")
+@Table(name = "C_Friend")
+@Component
 public class Friend
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-
 	private int id;
 	private String fromId;
 	private String toId;

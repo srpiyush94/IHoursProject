@@ -1,0 +1,23 @@
+<body>
+<table  class="table" style=" float:center;align:center;margin-left:100px;;margin-right:100px;width:80%;">
+<caption style="font-size:20px;padding-left:400px;"><h3 style="color:#286090;"><b>Suggested Users List</b> </h3></caption>
+<thead>
+<tr>
+<th>Profile Picture</th>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Mutual Friends</th>
+<th>Action</th></tr>
+</thead>
+<tbody>
+<tr ng-repeat="user in suggestedusers"><!-- suggestedusers is List<User>,user is user object -->
+<td> <img  class="img-circle"  src="http://localhost:7070/IHours/getimage/{{user.username}}" width="80" height="80" style="color:white;"></td>
+<td ><a href="" ng-click="getListofMutualFriends(user.username)">{{user.firstname}}</a></td>
+<td>{{user.lastname}}</td>
+<td>{{mutualfriends.length}}</td>
+<td style="align:center;"><a href="" data-ng-click="addFriendRequest(user.username)" class="btn btn-primary" style="align:center;margin-top:25px;">Send Friend Request</a></td>
+</tr>
+</tbody>
+</table>
+
+</body>

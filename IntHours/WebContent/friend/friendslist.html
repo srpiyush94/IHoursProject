@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+</head>
+<body>
+<br><br><br><br><br><br>
+<center><table class="table" style="align:center;margin-left:100px;;margin-right:100px;width:80%;">
+<caption style="font-size:20px;padding-left:400px;"><h3  style="color:#286090;"><b> Friends List</b></h3></caption>
+<thead>
+<tr><th>Firstname</th>
+<th>Lastname</th>
+<th>Profile Picture</th>
+<th>Status</th></tr>
+</thead>
+<tbody>
+<tr ng-repeat="user in friends"><!-- suggestedusers is List<User>,user is user object -->
+<td>{{user.firstname}}</td>
+<td>{{user.lastname}}</td>
+<td> <img  class="img-circle"  src="http://localhost:7070/IHours/getimage/{{user.username}}"  width="80" height="80" style="color:white;"></td>
+<td style="align:center;"><a href=""  disabled="disabled"  class="btn btn-primary" style="align:center;margin-top:25px;"> Friends &nbsp; <span class="glyphicon glyphicon-ok"></span></a></td>
+</tr>
+</tbody>
+</table>
+</center>
+</body>
+</html>

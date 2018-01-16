@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Job Page</title>
+<style type="text/css">
+.btn1 {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border-radius:1px;
+}
+</style>
+</head>
+
+<body data-ng-app="myApp">
+<br><br>
+<div data-ng-init="getjobs()">
+<div data-ng-repeat="job in jobs">
+<div class="container">
+	<div class="row">
+	 
+      <div class="span3">
+      <div class="well">
+       <h2 class="text-info">TITLE : {{job.title}}</h2><hr>
+
+        <div class="span3">	
+       <p ><span class="label label-info"><font size="3">COMPANY : {{job.company}}</font></span></p><hr>
+
+          <div class="span3">       	
+        <p>DETAILS : {{job.jobdetails}}</p></div><hr>
+        
+         <div class="span3">
+ <button data-ng-hide="job.userid==globals.currentUser.username" type="button" class="btn btn-primary" onclick="alert('Thanks...!!! You Successfully Applied For This Job...!!!')">Apply Job</button>
+</div></div></div></div></div></div></div></div>
+
+
+</body>
+</html>

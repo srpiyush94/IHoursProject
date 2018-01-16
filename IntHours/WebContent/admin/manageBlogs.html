@@ -1,12 +1,3 @@
-<style>
- body 
- 	{
-        background-color: #444;
-       }
-.vertical-offset-100{
-    padding-top:10px;
-}
-</style>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -24,6 +15,7 @@
 List of Blog Posts waiting for approval
 <table class="table">
 <tr><th>Recent Posts</th></tr>
+<!-- {{blogsWaitingForApproval|json}} -->
 <tr data-ng-repeat="blogPost in blogsWaitingForApproval ">
 
 <td><a href="#getBlogForApproval/{{blogPost.id}}">{{blogPost.title}}</a></td>
@@ -37,8 +29,8 @@ List of Blog Posts waiting for approval
 List of Approved Blog Posts
 <table class="table">
 <tr><th>Recent Posts</th></tr>
-<tr data-ng-repeat="blogPost in blogsApproved |orderBy:time:true">
-<td><a href="#getBlogForApproval/{{blogPost.id}}">{{blogPost.title}}</a></td>
+<tr data-ng-repeat="blogPost in blogsApproved ">
+<td><a href="#getBlogDetail/{{blogPost.id}}">{{blogPost.title}}</a></td>
 <td>Created By: {{blogPost.createdBy.username}}</td>
 <td>Created on: {{blogPost.postedOn | date:'MM/dd/yyyy HH:mm'}}</td>
 </tr>

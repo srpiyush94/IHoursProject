@@ -29,7 +29,9 @@ var id;
 	  console.log(response.status)
   })
      $scope.updateApproval=function(){
+		console.log("Blog approval start")
 		AdminService.updateApproval($scope.blogPost).then(function(response){
+			console.log("Blog approved")
 		  $location.path('/manageBlogs')
 		},function(response){
 			console.log(response.status);

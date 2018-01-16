@@ -1,18 +1,9 @@
-<style>
- body 
- 	{
-        background-color: #444;
-    }
-.vertical-offset-100{
-    padding-top:10px;
-}
-</style>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body data-ng-app='myApp' data-ng-controller='BlogPostController'>
+<body data-ng-app='myApp' data-ng-controller='LoginController'>
 <div class="container" align="justify">
 		<div class="row vertical-offset-100">
 		    <div class="col-md-8 col-md-offset-14">
@@ -24,10 +15,11 @@
 List of Blog Posts
 <table class="table">
 <tr><th>Recent Posts</th></tr>
-<tr data-ng-repeat="blogPost in blogsApproved |orderBy:time:true">
+<tr data-ng-repeat="blogPost in blogsApproved">
 <td><a href="#getBlogDetail/{{blogPost.id}}">{{blogPost.title}}</a></td>
 <td>Created By: {{blogPost.createdBy.username}}</td>
 <td>Created on: {{blogPost.postedOn | date:'MM/dd/yyyy HH:mm'}}</td>
+<td>Description on: {{blogPost.description|limitTo :70}}</td>
 </tr>
 </table>
 </div>

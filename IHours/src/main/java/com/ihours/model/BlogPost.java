@@ -12,7 +12,7 @@ import javax.persistence.*;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String title;
-	@Lob
+	
 	private String description;
 	@ManyToOne
 	private UsersDetails createdBy;

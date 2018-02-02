@@ -12,7 +12,7 @@
 <tbody>
 <tr ng-repeat="user in suggestedusers"><!-- suggestedusers is List<User>,user is user object -->
 <td> <img  class="img-circle"  src="http://localhost:7070/IHours/getimage/{{user.username}}" width="80" height="80" style="color:white;"></td>
-<td ><a href="" ng-click="getListofMutualFriends(user.username)">{{user.firstname}}</a></td>
+<td ><a href="" ng-init="getListofMutualFriends(user.username)">{{user.firstname}}</a></td>
 <td>{{user.lastname}}</td>
 <td>{{mutualfriends.length}}</td>
 <td style="align:center;"><a href="" data-ng-click="addFriendRequest(user.username)" class="btn btn-primary" style="align:center;margin-top:25px;">Send Friend Request</a></td>

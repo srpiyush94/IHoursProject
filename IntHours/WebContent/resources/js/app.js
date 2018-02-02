@@ -115,18 +115,15 @@ app
 					// $cookies.getObject('currentuser') || {};
 					console.log(" $rootScope.globals = " + $rootScope.globals)
 					// alert( $rootScope.globals)
-					console.log(" $rootScope.globals.currentUser = "
-							+ $rootScope.globals.currentUser)
+					console.log(" $rootScope.globals.currentUser = "+ $rootScope.globals.currentUser)
 					if ($rootScope.globals.currentUser) {
 
-						$http.defaults.headers.common['Authorization'] = 'Basic '
-								+ $rootScope.globals.currentUser.authdata;
+						$http.defaults.headers.common['Authorization'] = 'Basic'+ $rootScope.globals.currentUser.authdata;
 					}
 
 					// alert( $rootScope.globals.currentUser)
 					$rootScope
-							.$on(
-									'$locationChangeStart',
+							.$on('$locationChangeStart',
 									function(event, next, current) {
 										// redirect to login page if not logged
 										// in and trying to access a restricted
@@ -137,22 +134,15 @@ app
 
 										// var blogid = $routeParams.id;
 
-										var restrictedPage = $.inArray(
-												$location.path(), [
-														'/register',
-														'/viewBlogs', '',
-														'/viewForum' ]) === -1;
-										var adminPage = $.inArray($location
-												.path(), [ '/manageBlogs' ]) === -1;
+var restrictedPage = $.inArray($location.path(), ['/register','/viewBlogs','/viewForum' ]) === -1;
+										var adminPage = $.inArray($location.path(), [ '/manageBlogs' ]) === -1;
 										var loggedInUser = $rootScope.globals.currentUser;
 										console.log("loggedInUser : ")
 										console.log(loggedInUser)
 										// alert(loggedInUser)
 										if (loggedInUser) {
 											// alert("Logged In user")
-											console
-													.log(" $rootScope.islogged = "
-															+ $rootScope.islogged)
+											console.log(" $rootScope.islogged = "+ $rootScope.islogged)
 											$rootScope.islogged = true;
 											if ($rootScope.globals.currentUser.role === 'admin')
 												$rootScope.isAdmin = true;
@@ -160,11 +150,7 @@ app
 												$rootScope.isAdmin = false;
 										}
 
-										if (($location.path().includes(
-												'/viewblog/') || $location
-												.path().includes(
-														'/viewForumDetail/'))
-												&& !loggedInUser) {
+if (($location.path().includes('/viewblog/') || $location.path().includes('/viewForumDetail/'))	&& !loggedInUser) {
 											console.log("Not restricted : ")
 
 										} else if (restrictedPage

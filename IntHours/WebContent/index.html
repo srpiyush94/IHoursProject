@@ -144,35 +144,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="dropdown-menu agile_short_dropdown">
 									<li><a href="#event" data-ng-show="currentUser.role=='admin'">Create Event</a></li>
 									<li><a href="#viewevent">View Events</a></li>
-								</ul></li>
+								</ul>
+								</li>
+								<li><a href="#mailus">Mail Us</a></li>
+						 <li class="dropdown" data-ng-show="islogged">
+			          	<a class="dropdown-toggle" data-toggle="dropdown" href="">Profile<span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				           <li><a href="#/edituserprofile">Edit Profile </a> </li> 
+				            <li><a href="#profile">Upload Profile Picture</a></li>
+				          </ul>
+			             </li>
+						 <li data-ng-show="islogged"><a href="#chat"> Chat</a> </li>
+				    <li data-ng-show="!islogged"><a href="#register"> Register </a> </li>		
+				   <li data-ng-show="!islogged"><a href="#login"> Login </a></li>
+				   
+				   
+<li><a href=""> <span data-ng-show="islogged"><img	src="http://localhost:7070/IHours/getimage/{{currentUser.username}}"	alt="upload Picture" width="100px" height="100px"	class="img-rounded"></span></a></li>				   
+				   
+ <!-- <li data-ng-show="islogged"><a href="#profile"><img data-ng-src="http://localhost:7070/IHours/getimage/{{currentUser.username}}" alt="upload Picture" width="30px" height="30px" class="img-circle"></a></li> -->
+				   <li  data-ng-show="islogged"><a href=""> Welcome {{ currentUser.firstname}} </a></li>
+				    <li class="dropdown" data-ng-show="islogged">
+					    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+					   	<span class="glyphicon glyphicon-globe" data-ng-click="updateLength()">
+					   	<span class="rw-number-notification" data-ng-if="notificationNotViewedLength>0">{{notificationNotViewedLength}}</span> </span></a>
+					   	
+					   	<ul class="dropdown-menu">
+					   	<li data-ng-show="notificationNotViewed.length==0 && notificationViewed.length==0"><a>No New Notifications Found</a></li>
+					           <li data-ng-repeat="notification in notificationNotViewed"> 
+					           <a href="" data-ng-click="updateNotification(notification.id)" style="color:blue">{{notification.notificationType}} : {{notification.notificationDesc}} is {{notification.approvalStatus}} {{notification.rejectionReason}}</a></li> 
 
-							<li><a href="#mailus">Mail Us</a></li>
-
-							<li><a href="#profile"> <span data-ng-show="islogged"><img	src="http://localhost:7070/IHours/getimage/{{currentUser.username}}"	alt="upload Picture" width="100px" height="100px"	class="img-rounded"></span></a></li>
-							 <li><a href="#/edituserprofile" data-ng-show="currentUser.firstname">Edit Profile</a></li>
-
-							<li><a href="#register"><span data-ng-show="!islogged">
-										Register </span></a></li>
-							<li><a href="#login"><span data-ng-show="!islogged">
-										Login </span></a></li>
-							<li><a href=""><span data-ng-show="islogged">
-										Welcome User {{ globals.currentUser.firstname}} </span></a></li>
-							<li><a href="" data-ng-click="logout()"
-								data-ng-controller='LoginController'><span
-									data-ng-show="islogged"> Logout </span></a></li>
-				
-					    <li class="dropdown"  style="padding-top: 10px; font-weight: bold; background-color: #286090;" data-ng-show="islogged">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown" 
-						style="color: white; font-weight: bold; text-decoration: none;border-style:none; background-color: #286090; font-size: 17px;">
-						<i class="fa fa-users " style="font-size:20px;color:white;"></i> &nbsp;<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-						<li><a href="#/suggestedusers">List of suggested users</a></li>
-							<li><a href="#/pendingrequests">Pending Requests</a></li>
-						<li><a href="#/friends">Friends List</a></li></ul>
-						
-						</li>
-						<li><a href="#/chat">chat </a></li>
-						
+					           <li data-ng-repeat="notification1 in notificationViewed"> 
+					           <a href="">{{notification1.notificationType}} : {{notification1.notificationDesc}} is {{notification1.approvalStatus}} {{notification1.rejectionReason}}</a></li>
+					          </ul>
+				   	</li>
+				   <li data-ng-show="islogged"><a href="" data-ng-click="logout()" data-ng-controller='LoginController'> Logout </a></li>
 								</ul>
        
 <ul class="nav navbar-nav navbar-right" data-ng-show="isAdmin">

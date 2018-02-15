@@ -33,6 +33,10 @@ blogPostService.addComment=function(body,id){
 	return $http.post(BASE_URL + "/addcomment?body="+body +'&id='+id)
 	//http://localhost:8080/project2middleware/addcomment?commentText='Thanks'&id=484 
 }
+blogPostService.getBlogComments=function(blogId){
+    return $http.get(BASE_URL+"/getblogcomments/"+blogId)
+    }
+
 
 return blogPostService;
 })

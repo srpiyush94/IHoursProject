@@ -8,8 +8,7 @@ app.controller('RegisterController',function(RegisterService,$scope,$location,$r
         {
             $scope.message="Registered successfully..... Please Login...."
              console.log("done")
-                
-                $location.path('/login')
+             $location.path('/login')
         }, function(response)
         {
             $scope.error=response.data;
@@ -18,21 +17,5 @@ app.controller('RegisterController',function(RegisterService,$scope,$location,$r
     
     }
     
-  /*
-    $scope.userobj=UserService.getUserByUsername().then(function(response)
-    		{
-    	$scope.userobj=response.data
-    },function(response){
-    	console.log(response.status)
-    })
-    $scope.update=function()
-    {
-    	UserService.updateUserProfile($scope.userobj).then(function(response)
-    			
-    			{
-    		$scope.message="Updated the profile successfully"
-    	},function(response){
-    		console.log(response.data)
-    	})
-    }*/
+ 
 })

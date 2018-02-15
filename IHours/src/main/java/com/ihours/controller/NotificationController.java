@@ -27,14 +27,14 @@ public class NotificationController {
 	@RequestMapping(value="/getnotification/{viewed}")
 	public ResponseEntity<?> getNotification(@PathVariable("viewed")int viewed,HttpSession session){
 
-		Integer userId = (Integer) session.getAttribute("userId");
+		  UsersDetails validUser=(UsersDetails)session.getAttribute("validUser");
 		
-		if(userId == null){
+		if(validUser == null){
 			  
 			    return new ResponseEntity<Error>(new Error(7,"User session details not found"),HttpStatus.UNAUTHORIZED);
 		}	   
 		else {
-			List<Notification> notificationList = notificationService.getNotification(userId, viewed);
+			List<Notification> notificationList = notificationService.getNotification(validUser.getId(), viewed);
 			
 			if(notificationList == null){
 			
@@ -50,9 +50,9 @@ public class NotificationController {
 	@RequestMapping(value="/updatenotification/{notificationId}")
 	public ResponseEntity<?> updateNotification(@PathVariable("notificationId")int notificationId,HttpSession session){
 
-		Integer userId = (Integer) session.getAttribute("userId");
+		  UsersDetails validUser=(UsersDetails)session.getAttribute("validUser");
 		
-		if(userId == null){
+		if(validUser == null){
 			  
 			    return new ResponseEntity<Error>(new Error(7,"User session details not found"),HttpStatus.UNAUTHORIZED);
 		}	   

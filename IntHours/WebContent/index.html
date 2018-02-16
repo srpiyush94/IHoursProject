@@ -162,7 +162,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <li><a href=""> <span data-ng-show="islogged"><img	src="http://localhost:7070/IHours/getimage/{{currentUser.username}}"	alt="upload Picture" width="100px" height="100px"	class="img-rounded"></span></a></li>				   
 				   
  <!-- <li data-ng-show="islogged"><a href="#profile"><img data-ng-src="http://localhost:7070/IHours/getimage/{{currentUser.username}}" alt="upload Picture" width="30px" height="30px" class="img-circle"></a></li> -->
+        <li class="dropdown" data-ng-show="islogged" style="padding-top: 10px; font-weight: bold; background-color: #286090;">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username" 
+						style="color: white; font-weight: bold; text-decoration: none;border-style:none; background-color: #286090; font-size: 17px;">
+						<i class="fa fa-users " style="font-size:20px;color:white;"></i> &nbsp;<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+						<li><a href="#/suggestedusers">List of suggested users</a></li>
+							<li><a href="#/pendingrequests">Pending Requests</a></li>
+						<li><a href="#/friends">Friends List</a></li></ul>
+						</span>
+						</li>
+ 
 				   <li  data-ng-show="islogged"><a href=""> Welcome {{ currentUser.firstname}} </a></li>
+				   
+				   
+				   
 				    <li class="dropdown" data-ng-show="islogged">
 					    <a href="" class="dropdown-toggle" data-toggle="dropdown">
 					   	<span class="glyphicon glyphicon-globe" data-ng-click="updateLength()">
@@ -270,6 +284,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //here ends scrolling icon -->
 
 	<div data-ng-view></div>
+	
+
+<div class="footer">
+<div class="container" style="background-color: #21d192;">
+<div class="social-links social-icons" style="text-align:right"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/?request_context=signup" target="_blank"><i class="fa fa-twitter"></i></a>
+<a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a><a href="https://github.com/srpiyush94/IHoursProject" target="_blank"><i class="fa fa-github"></i></a></div>
+<div class="row">
+</div>
+ <div class="row">
+	<div class="col-md-3 col-sm-4 footer-navigation">		   
+	</div>
+	<div class="col-md-2 col-sm-4 footer-navigation">
+	    <h4><a href="#"><span>Help </span></a></h4>	    
+	</div>
+	
+	<div class="col-md-2 col-sm-4 footer-contacts">
+	    <h4><a href="#"><span>Community </span></a></h4>	 
+	</div>
+	<div class="col-md-2 col-sm-4 footer-contacts">
+	    <h4><a href="#"><span>Developer </span></a></h4>	 
+	</div>	
+</div>
+<hr>
+<div class="row">
+	<div class="footer-navigation"></div>	
+	<div class="footer-navigation"> <a href="#/termandconditions">Term Of Service</a> |<a href="#/privacypolicy"> Privacy </a>| <a href="#/contentpolicy">Content Policy</a></div>
+	<div class="footer-navigation"></div>   
+</div>
+</div>
+</div>
+	
 </body>
 <script type="text/javascript">
 	$('ul.nav li.dropdown').hover(

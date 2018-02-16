@@ -8,6 +8,10 @@ app.factory('AuthenticationService', AuthenticationService);
         service.Logout=Logout;
         service.SetCredentials = SetCredentials;
         service.ClearCredentials = ClearCredentials;
+        service.getNotificationNotViewed = getNotificationNotViewed;
+        service.getNotificationViewed = getNotificationViewed;
+        service.updateNotification = updateNotification;
+        service.getAllApplicationUserNames = getAllApplicationUserNames;   
  
         return service;
  
@@ -87,7 +91,58 @@ app.factory('AuthenticationService', AuthenticationService);
             $http.defaults.headers.common.Authorization = 'Basic';
             //alert("credential cleared");
         }
+        
+        function getNotificationNotViewed(callback){
+    		//alert("inside not viewed service");
+    		$http.get(BASE_URL+"/getnotification/"+0).then(function(response,data,status,headers,config){
+        		response = {success:true,data: response.data };
+        		callback(response);
+        		
+        	},function(response,data,status,headers,config){
+        		response = {success:false,data: response.data };
+        		callback(response);
+        	});
+    	}
+        
+        function getNotificationViewed(callback){
+    		//alert("inside viewed service")
+    		$http.get(BASE_URL+"/getnotification/"+1).then(function(response,data,status,headers,config){
+        		response = {success:true,data: response.data };
+        		callback(response);
+        		
+        	},function(response,data,status,headers,config){
+        		
+        		response = {success:false,data: response.data };
+        		callback(response);
+        	});
+    	}
+        
+    	function updateNotification(notificationId,callback){
+    		$http.get(BASE_URL+"/updatenotification/"+notificationId).then(function(response,data,status,headers,config){
+        		response = {success:true,data: response.data };
+        		callback(response);
+        		
+        	},function(response,data,status,headers,config){
+        		
+        		response = {success:false,data: response.data };
+        		callback(response);
+        	});
+    	}
+    	function getAllApplicationUserNames(callback){
+    		$http.get(BASE_URL+"/getAllUsersName").then(function(response,data,status,headers,config){
+        		response = {success:true,data: response.data };
+        		callback(response);
+        		
+        	},function(response,data,status,headers,config){
+        		
+        		response = {success:false,data: response.data };
+        		callback(response);
+        	});
+    	}
     }
+        
+        
+
     var Base64 = {
     		 
             keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',

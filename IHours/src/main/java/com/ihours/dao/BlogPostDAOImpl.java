@@ -26,7 +26,7 @@ public class BlogPostDAOImpl implements BlogPostDAO {
 		session.saveOrUpdate(post);
 		tx.commit();
 		session.clear();
-		session.close();	
+	
 		return true;
 	}
 
